@@ -13,27 +13,27 @@ public class AdminMap<T> extends UserMap<T> {
         super(school);
     }
     
-    public void add(School school) throws KeyConflictException {
+    public void add(T t) throws KeyConflictException {
         //add to hashmap
-        //insert into database
-        switch (school) {
-        case COURSE:
-            dbconn.addCourse("CPAN-205-0NB", "Computer Programming", "description", "Exam", "J140", "CPAN-205-0NB", 7458);
-            Course course = new Course();
-           // map.put(course.getCourseID(), (T)course.getMap());
-            break;
-        case PROGRAM:
-            dbconn.addProgram("CPAN-205-0NB", "CPAN");
-            break;
-        case ROOM:
-            dbconn.addRoom("J140", "Lab", "J Building");
-            break;
-        case STUDENT_GROUP:
-            dbconn.addStudent("Trevor", "Smart", 2345);
-            break;
-        default:
-            break;
-        }
+//        //insert into database
+//        switch (school) {
+//        case COURSE:
+//            dbconn.addCourse("CPAN-205-0NB", "Computer Programming", "description", "Exam", "J140", "CPAN-205-0NB", 7458);
+//            Course course = new Course();
+//           // map.put(course.getCourseID(), (T)course.getMap());
+//            break;
+//        case PROGRAM:
+//            dbconn.addProgram("CPAN-205-0NB", "CPAN");
+//            break;
+//        case ROOM:
+//            dbconn.addRoom("J140", "Lab", "J Building");
+//            break;
+//        case STUDENT_GROUP:
+//            dbconn.addStudent("Trevor", "Smart", 2345);
+//            break;
+//        default:
+//            break;
+//        }
     }
     
     public void remove(T type) {

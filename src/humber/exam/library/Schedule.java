@@ -26,14 +26,14 @@ public class Schedule
         MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
     };
 
-    private Map<Period, SchedulePeriod> schedule;
+    protected Map<Period, SchedulePeriod> schedule;
 
     public Schedule()
     {
 
     }
     
-    public void addExam(Exam exam)
+    private void addExam(Exam exam)
     {
         DatabaseConnection connection = DatabaseConnection.open();
         connection.connect();
@@ -45,7 +45,7 @@ public class Schedule
 
     }
     
-    public static Timestamp convertStoT(String str_date) {
+    private static Timestamp convertStoT(String str_date) {
     try {
       DateFormat formatter;
       formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -59,7 +59,7 @@ public class Schedule
     }
   }
     
-    public ExamMap searchForExams(Period period, Day day)
+    private ExamMap searchForExams(Period period, Day day)
     {
         DatabaseConnection connection = DatabaseConnection.open();
         connection.connect();
@@ -87,7 +87,7 @@ public class Schedule
         return listOfExams;
     }
     
-    public ExamMap searchForExams(Period period, Day day, int username)
+    private ExamMap searchForExams(Period period, Day day, int username)
     {
         DatabaseConnection connection = DatabaseConnection.open();
         connection.connect();
@@ -105,7 +105,7 @@ public class Schedule
                 String end_time = (r.getString("END_TIME"));
                 String teacher = (r.getString("TEACHER_ID"));
                 
-                //listOfExams.addExam(new Exam(course, room, period.name(), day_of_week, start_time, end_time));
+               //listOfExams.addExam(new Exam(course, room, day_of_week, start_time, end_time));
             }
             catch (SQLException e)
             {
@@ -125,6 +125,26 @@ public class Schedule
     {
         return new Exam();
     }
+    
+    public ExamMap getExams(Period period, Day day)
+    {
+        return new ExamMap();
+    }
+    
+    public ExamMap getExams(Period period, Day day, Course course)
+    {
+        return new ExamMap();
+    }
+    
+    public ExamMap getExams(Period period, Day day, Room room)
+    {
+        return new ExamMap();
+    }
+    
+    public ExamMap getExams(Period period, Day day, Program program)
+    {
+        return new ExamMap();
+    }
 
     public void addExamMap(Period period, Day day, ExamMap examMap)
     {
@@ -136,38 +156,5 @@ public class Schedule
         schedule.get(period).removeExam(day, examID);
     }
 
-    public ExamMap getExamMap(Period period, Day day, String examID)
-    {
-        return schedule.get(period).getExamMap(day);
-    }
-
-    public void removeTimeSlot(Period period)
-    {
-        schedule.remove(period);
-    }
-
-    public void addTimeSlot(Period period, int startHour, int startMin, int endHour, int endMin)
-    {
-
-        if (schedule.containsKey(period))
-        {
-            System.err.println("Slot already exists. Please delete slot or choose an unoccupied slot");
-        }
-        else
-        {
-            SchedulePeriod newPeriod = new SchedulePeriod(startHour, startMin, endHour, endMin);
-            schedule.put(period, newPeriod);
-        }
-    }
-
-    public void changeSlotStartTime(Period period, int numOfHours, int numOfMin)
-    {
-        schedule.get(period).changeStartTime(numOfHours, numOfMin);
-    }
-
-    public void changeSlotEndTime(Period period, int numOfHours, int numOfMin)
-    {
-        schedule.get(period).changeEndTime(numOfHours, numOfMin);
-    }
-
+        
 }

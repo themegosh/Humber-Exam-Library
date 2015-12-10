@@ -2,6 +2,8 @@ package humber.exam.library;
 
 import humber.exam.database.DatabaseConfiguration;
 import humber.exam.database.DatabaseConnection;
+import humber.exam.library.Schedule.Day;
+import humber.exam.library.Schedule.Period;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,12 +15,20 @@ public class ScheduleTestMain {
 	
     public static void main(String[] args) throws SQLException {
     	
-        Administrator admin = new Administrator();
-        UserMap u = admin.getMap(School.PROGRAM);
-        HashMap<String, Program> programs = u.returnList();
+        User user = new User("", "");
+        Schedule schedule = user.getSchedule();
+        ExamMap exams = schedule.getExams(Period.A, Day.MONDAY);
+        UserMap<Course> userMapCourses = user.getMap(School.COURSE);
+        Course course = userMapCourses.get("");
+        ExamMap exams2 = schedule.getExams(Period.A, Day.MONDAY, course);
         
-        for (String key : programs.keySet()){
-            System.out.println(programs.get(key).getProgramName());
-        }
+        Administrator admin = new Administrator("", "");
+        AdminSchedule adminSchedule = admin.
+        AdminMap<Room> adminMapRooms = admin.getAdminMap(School.ROOM);
+        Room room = adminMapRooms.get("");
+        
+        
+        
+        
     }   
 }

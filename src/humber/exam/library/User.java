@@ -5,38 +5,38 @@
  */
 package humber.exam.library;
 
-import humber.exam.database.DatabaseConnection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
  *
- * @author n00024233
+ * @author mathe_000
  */
-public class Administrator extends Account {
+public class User extends Account {
+    
+    private String username;
+    private String password;
 
-    public Administrator(String username, String password) {
+    public User(String username, String password) {
         super(username, password);
     }
     
-    public AdminMap getAdminMap(School school) throws SQLException{
+    public UserMap getMap(School school) throws SQLException {
         switch (school) {
         case COURSE:
-            return new AdminMap<Course>(school);
+            return new UserMap<Course>(school);
         case PROGRAM:
-            return new AdminMap<Program>(school);
+            return new UserMap<Program>(school);
         case ROOM:
-            return new AdminMap<Room>(school);
+            return new UserMap<Room>(school);
         //case STUDENT_GROUP:
           //  return new UserMap<StudentGroup>(school);
         default:
             return null;
-    }
-    }
-        
-    public AdminSchedule getAdminSchedule() {
-        return new AdminSchedule();
+        }
     }
     
+    public Schedule getSchedule() {
+        return new Schedule();
+    }
     
 }

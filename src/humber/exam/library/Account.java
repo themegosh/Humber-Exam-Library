@@ -14,18 +14,11 @@ import java.sql.SQLException;
 
 public abstract class Account {
 
-    public UserMap getMap(School school) throws SQLException {
-        switch (school) {
-        case COURSE:
-            return new UserMap<Course>(school);
-        case PROGRAM:
-            return new UserMap<Program>(school);
-        case ROOM:
-            return new UserMap<Room>(school);
-       // case STUDENT_GROUP:
-         //   return new UserMap<StudentGroup>(school);
-        default:
-            return null;
-        }
+    private String username;
+    private String password;
+    
+    public Account (String username, String password) {
+    
     }
 }
+   

@@ -26,31 +26,31 @@ public class SchedulePeriod {
         
     }
     
-    public void addExam(Day day, Exam exam) {
+    protected void addExam(Day day, Exam exam) {
         
     }
     
-    public void removeExam(Day day, String examID) {
+    protected void removeExam(Day day, String examID) {
         
     }
     
-    public Exam getExam(Day day, String examID) {
+    protected Exam getExam(Day day, String examID) {
         return new Exam();
     }
     
-    public void addExamMap(Day day, ExamMap examList) {
+    protected void addExamMap(Day day, ExamMap examList) {
         
     }
     
-    public void removeExamMap(Day day) {
+    protected void removeExamMap(Day day) {
         
     }
     
-    public ExamMap getExamMap(Day day) {
+    protected ExamMap getExamMap(Day day) {
         return subSlots.get(day);
     }
     
-    public String getStartTime() {
+    protected String getStartTime() {
         
         DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm");
         String startTime = formatter.print(this.startTime);
@@ -58,7 +58,7 @@ public class SchedulePeriod {
     
     }
     
-    public String getEndTime() {
+    protected String getEndTime() {
         
         DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm");
         String endTime = formatter.print(this.endTime);
@@ -66,7 +66,7 @@ public class SchedulePeriod {
         
     }
     
-    public void changeStartTime(int numOfHours, int numOfMin) {
+    protected void changeStartTime(int numOfHours, int numOfMin) {
        
         if (numOfHours < 0 && numOfMin < 0) {
             int hoursToSubtract = numOfHours * -1;
@@ -93,7 +93,7 @@ public class SchedulePeriod {
         
     }
     
-    public void changeEndTime(int numOfHours, int numOfMin) {
+    protected void changeEndTime(int numOfHours, int numOfMin) {
         
         if (numOfHours < 0 && numOfMin < 0) {
             int hoursToSubtract = numOfHours * -1;
