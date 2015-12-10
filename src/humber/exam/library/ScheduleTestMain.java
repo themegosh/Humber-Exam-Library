@@ -23,9 +23,10 @@ public class ScheduleTestMain {
         ExamMap exams2 = schedule.getExams(Period.A, Day.MONDAY, course);
         
         Administrator admin = new Administrator("", "");
-        AdminSchedule adminSchedule = admin.
+        AdminSchedule adminSchedule = admin.getAdminSchedule();
         AdminMap<Room> adminMapRooms = admin.getAdminMap(School.ROOM);
         Room room = adminMapRooms.get("");
+        ExamMap exams3 = adminSchedule.getExams(Period.A, Day.MONDAY, room);
         
         
         

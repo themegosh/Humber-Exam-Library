@@ -18,7 +18,7 @@ public abstract class Account {
     private String password;
     
     public Account (String username, String password) {
-    
+        
     }
 }
    
