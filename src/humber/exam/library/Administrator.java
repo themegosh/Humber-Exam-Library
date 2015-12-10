@@ -13,9 +13,9 @@ import java.sql.SQLException;
  *
  * @author n00024233
  */
-public class Administrator extends Account {
+public class Administrator extends User {
 
-    public Administrator(String username, String password) {
+    public Administrator(String username, String password) throws Exception {
         super(username, password);
     }
     

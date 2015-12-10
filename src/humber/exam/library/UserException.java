@@ -10,11 +10,14 @@ package humber.exam.library;
  * @author Hau
  */
 public class UserException extends Exception{
-    	private final String msg;
-
-        public UserException(){
-		msg = "Incorrect user name.";
-	}
-        
+    String msg;
+    public UserException(String msg){
+        super(msg);
+        this.msg = msg;
+    }
+    
+    public String getMsg(){
+        return msg;
+    }
 }
 

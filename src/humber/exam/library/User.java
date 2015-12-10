@@ -21,7 +21,7 @@ public class User {
     private String lastName;
     private int accessLevel;
 
-    public User(String username, String password) {
+    public User(String username, String password) throws Exception {
         
         try {
             DatabaseConnection conn = DatabaseConnection.open();

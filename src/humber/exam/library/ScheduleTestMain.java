@@ -15,7 +15,7 @@ public class ScheduleTestMain {
 	
     public static void main(String[] args) throws SQLException {
     	
-        User user = new User("", "");
+        /*User user = new User("", "");
         Schedule schedule = user.getSchedule();
         ExamMap exams = schedule.getExams(Period.A, Day.MONDAY);
         UserMap<Course> userMapCourses = user.getMap(School.COURSE);
@@ -27,7 +27,7 @@ public class ScheduleTestMain {
         AdminMap<Room> adminMapRooms = admin.getAdminMap(School.ROOM);
         Room room = adminMapRooms.get("");
         ExamMap exams3 = adminSchedule.getExams(Period.A, Day.MONDAY, room);
-        
+        */
         
         
         
