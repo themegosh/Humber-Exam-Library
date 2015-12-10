@@ -23,11 +23,14 @@ public class User {
 
     public User(String username, String password) throws Exception {
         
+        if (username.isEmpty() || password.isEmpty())
+            throw new UserException("Username and/or password cannot be empty!");
+        
         try {
             DatabaseConnection conn = DatabaseConnection.open();
             Result result = conn.getUser(username, password);
             
-            if (result.hasNext()){
+            if (result != null && result.hasNext()) {
                 ResultSet set = result.next();
                 id = set.getInt("id");
                 firstName = set.getString("first_name");
@@ -37,6 +40,7 @@ public class User {
             else {
                 throw new UserException("Invalid username and/or password.");
             }
+            
             conn.close();
         }
         catch (Exception e){
