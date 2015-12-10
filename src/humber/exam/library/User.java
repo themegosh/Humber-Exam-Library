@@ -6,18 +6,42 @@
 package humber.exam.library;
 
 import java.sql.SQLException;
+import humber.exam.database.DatabaseConnection;
+import humber.exam.database.Result;
+import java.sql.ResultSet;
 
 /**
  *
  * @author mathe_000
  */
-public class User extends Account {
+public class User {
     
-    private String username;
-    private String password;
+    private int id;
+    private String firstName;
+    private String lastName;
+    private int accessLevel;
 
     public User(String username, String password) {
-        super(username, password);
+        
+        try {
+            DatabaseConnection conn = DatabaseConnection.open();
+            Result result = conn.getUser(username, password);
+            
+            if (result.hasNext()){
+                ResultSet set = result.next();
+                id = set.getInt("id");
+                firstName = set.getString("first_name");
+                lastName = set.getString("last_name");
+                accessLevel = set.getInt("access_level");
+            }
+            else {
+                throw new UserException("Invalid username and/or password.");
+            }
+            conn.close();
+        }
+        catch (Exception e){
+            throw e;
+        }
     }
     
     public UserMap getMap(School school) throws SQLException {
