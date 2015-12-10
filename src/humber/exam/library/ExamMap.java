@@ -3,6 +3,9 @@ package humber.exam.library;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.ArrayList;
+import humber.exam.database.*;
+import java.sql.ResultSet;
 
 class ExamMap 
 {
@@ -53,6 +56,28 @@ class ExamMap
     public Map returnExamMap()
     {
         return allExams;
+    }
+    
+    public ArrayList<Exam> getExamsByDay(String day) { 
+        ArrayList<Exam> ae = new ArrayList();
+        DatabaseConnection conn = DatabaseConnection.open();
+        Result result = conn.getExamsOnDay(day);
+        Exam e;
+            
+        while (result.hasNext()){
+            ResultSet set = result.next();
+            //e = new Exam(set.getString("course_code"), set.getString("local"))
+                    //public Exam(Course course, LocalTime date, LocalTime starTime, LocalTime endTime, Room room)
+            
+            
+            /*id = set.getInt("id");
+            firstName = set.getString("first_name");
+            lastName = set.getString("last_name");
+            accessLevel = set.getInt("access_level");*/
+        }
+        
+        
+        return ae;
     }
 
 }

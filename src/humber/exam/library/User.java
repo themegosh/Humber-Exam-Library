@@ -48,6 +48,22 @@ public class User {
         }
     }
     
+    public int getId(){
+        return id;
+    }
+    
+    public String getFirstName(){
+        return firstName;
+    }
+    
+    public String getLastName() {
+        return lastName;
+    }
+    
+    public int getAccessLevel(){
+        return accessLevel;
+    }
+    
     public UserMap getMap(School school) throws SQLException {
         switch (school) {
         case COURSE:

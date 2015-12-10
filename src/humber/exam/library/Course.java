@@ -12,6 +12,14 @@ package humber.exam.library;
 class Course {
   String code, cName, teacher, time, room;
 
+    public Course(String code, String cName, String teacher, String time, String room) {
+        this.code = code;
+        this.cName = cName;
+        this.teacher = teacher;
+        this.time = time;
+        this.room = room;
+    }
+  
     public String getCode() {
         return code;
     }
