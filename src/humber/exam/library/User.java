@@ -48,6 +48,13 @@ public class User {
         }
     }
     
+    public User(int id, String first, String last, int accessLevel) {
+        this.id = id;
+        this.firstName = first;
+        this.lastName = last;
+        this.accessLevel = accessLevel;
+    }
+    
     public int getId(){
         return id;
     }
