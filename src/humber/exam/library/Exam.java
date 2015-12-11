@@ -12,15 +12,6 @@ public class Exam
     Room room;
     int ID;
     static int examIdentifier = 1923840;
-
-    public Exam() {
-    this.course = "";
-    this.date = "";
-    this.startTime = "";
-    this.endTime = "";
-    this.room = "";
-    this.ID = 0;  
-    }
     
     public Exam(Course course, LocalTime date, LocalTime starTime, LocalTime endTime, Room room)
     {
