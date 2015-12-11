@@ -19,7 +19,7 @@ public class Exam {
         this.startTime = startTime;
         this.endTime = endTime;
         this.teacherId = teacherId;
-        save();
+        //save();
     }
     public Exam(String courseCode) throws Exception{
         DatabaseConnection conn = DatabaseConnection.open();
