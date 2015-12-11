@@ -64,21 +64,6 @@ public class User {
         return accessLevel;
     }
     
-    public UserMap getMap(School school) throws SQLException {
-        switch (school) {
-        case COURSE:
-            return new UserMap<Course>(school);
-        case PROGRAM:
-            return new UserMap<Program>(school);
-        case ROOM:
-            return new UserMap<Room>(school);
-        //case STUDENT_GROUP:
-          //  return new UserMap<StudentGroup>(school);
-        default:
-            return null;
-        }
-    }
-    
     public Schedule getSchedule() {
         return new Schedule();
     }
