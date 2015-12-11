@@ -13,12 +13,14 @@ public class Exam {
     LocalTime endTime;
     int teacherId;
     
-    public Exam(String courseCode, String roomId, LocalTime startTime, LocalTime endTime, int teacherId) {
+    public Exam(String courseCode, String roomId, String startTime, String endTime, int teacherId)throws Exception {
         this.courseCode = courseCode;
         this.roomId = roomId;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.startTime = new LocalTime(Timestamp.valueOf(startTime).getNanos());;
+        this.endTime = new LocalTime(Timestamp.valueOf(endTime).getNanos());;
         this.teacherId = teacherId;
+        if (courseCode.isEmpty() || roomId.isEmpty()|| startTime.isEmpty()|| endTime.isEmpty()|| roomId.isEmpty())
+            throw new UserException("Username and/or password cannot be empty!");
         //save();
     }
     public Exam(String courseCode) throws Exception{
