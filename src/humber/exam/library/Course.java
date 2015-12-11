@@ -9,9 +9,17 @@ package humber.exam.library;
  *
  * @author n00024233
  */
-class Course {
+public class Course {
   String code, cName, teacher, time, room;
 
+   public Course(){
+       this.code = "";
+       this.cName = "";
+       this.teacher = "";
+       this.time = "";
+       this.room = "";
+   }
+  
     public Course(String code, String cName, String teacher, String time, String room) {
         this.code = code;
         this.cName = cName;

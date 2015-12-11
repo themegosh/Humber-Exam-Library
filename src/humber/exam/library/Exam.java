@@ -3,7 +3,7 @@ package humber.exam.library;
 
 import org.joda.time.LocalTime;
 
-class Exam
+public class Exam
 {
     Course course;
     LocalTime date;
@@ -14,6 +14,12 @@ class Exam
     static int examIdentifier = 1923840;
 
     public Exam() {
+    this.course = "";
+    this.date = "";
+    this.startTime = "";
+    this.endTime = "";
+    this.room = "";
+    this.ID = 0;  
     }
     
     public Exam(Course course, LocalTime date, LocalTime starTime, LocalTime endTime, Room room)

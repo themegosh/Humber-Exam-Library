@@ -11,6 +11,12 @@ public class Room {
         this.roomID = roomID;
         this.classroom = classroom;
     }
+    
+    public Room(){
+        this.buildingID = "";
+        this.roomID = "";
+        this.classroom = false;        
+    }
 
     public String getBuildingID() {
         return buildingID;

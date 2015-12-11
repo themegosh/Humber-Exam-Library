@@ -57,7 +57,7 @@ class ExamMap
     {
         return allExams;
     }
-    
+    /*
     public ArrayList<Exam> getExamsByDay(String day) { 
         ArrayList<Exam> ae = new ArrayList();
         DatabaseConnection conn = DatabaseConnection.open();
@@ -66,18 +66,18 @@ class ExamMap
             
         while (result.hasNext()){
             ResultSet set = result.next();
-            //e = new Exam(set.getString("course_code"), set.getString("local"))
-                    //public Exam(Course course, LocalTime date, LocalTime starTime, LocalTime endTime, Room room)
+            e = new Exam(set.getString("course_code"), set.getString("local"))
+                    public Exam(Course course, LocalTime date, LocalTime starTime, LocalTime endTime, Room room)
             
             
-            /*id = set.getInt("id");
+            id = set.getInt("id");
             firstName = set.getString("first_name");
             lastName = set.getString("last_name");
-            accessLevel = set.getInt("access_level");*/
+            accessLevel = set.getInt("access_level");
         }
         
         
         return ae;
     }
-
+*/
 }
