@@ -14,99 +14,81 @@ import java.sql.ResultSet;
  * @author n00024233
  */
 public class Course {
-    private String code, courseName, time, room;
-    private int teacherId;
+    private String code, courseName, description;
+    private int teacherId, programId;
   
-    public Course(String code, String courseName, int teacher, String time, String room) {
+    public Course(String code, String courseName, String description, int teacher, String time, String room, int programId) {
         this.code = code;
         this.courseName = courseName;
+        this.description = description;
         this.teacherId = teacher;
-        this.time = time;
-        this.room = room;
+        this.programId = programId;
     }
     
-    public Course(String code){
-        try {
-            DatabaseConnection conn = DatabaseConnection.open();
-            Result result = conn.getCourseForCourseCode(code);
-            
-            if (result != null && result.hasNext()) {
-                ResultSet set = result.next();
-                
-                Result resTeacher = conn.getUserById(Integer.valueOf(set.getString("TEACHER_ID")));
-                
-                c = new Course(set.getString("COURSE_CODE"), set.getString("COURSE_NAME"), set.getString("COURSE_"));
-                
-                id = set.getInt("id");
-                firstName = set.getString("first_name");
-                lastName = set.getString("last_name");
-                accessLevel = set.getInt("access_level");
-            }
-            else {
-                throw new UserException("Invalid username and/or password.");
-            }
-            
-            conn.close();
+    public Course(String code) throws Exception {
+        DatabaseConnection conn = DatabaseConnection.open();
+        Result result = conn.getCourseForCourseCode(code);
+
+        if (result != null && result.hasNext()) {
+            ResultSet set = result.next();
+
+            this.code = code;
+            this.courseName = set.getString("NAME");
+            this.description = set.getString("DESCRIPTION");
+            this.teacherId = set.getInt("TEACHER_ID");
+            this.programId = set.getInt("PROGRAM_ID");
         }
-        catch (Exception e){
-            throw e;
+        else {
+            throw new Exception("Error: Class Course ("+code+") could not be found in DB!");
         }
+            
+        conn.close();
     }
       
     public String getCode() {
         return code;
     }
 
-    public String getcName() {
-        return cName;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public String getTeacher() {
-        return teacher;
+    public int getTeacherId() {
+        return teacherId;
     }
 
-    public String getTime() {
-        return time;
+    public int getProgramId() {
+        return programId;
+    }
+    
+    public String getDescription(){
+        return description;
+    }
+    
+    public void setDescription(String description){
+        this.description = description;
     }
 
-    public String getRoom() {
-        return room;
-    }
-
-
-    public boolean setTime(String time) {
-        this.time = time;
-        return true;
-    }
-
- 
-    public boolean setCode(String code) {
+    public void setCode(String code) {
         this.code = code;
-        return true;
     }
 
 
-    public boolean setcName(String cName) {
-        this.cName = cName;
-        return true;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
-    public boolean setTeacher(String teacher) {
-        this.teacher = teacher;
-        return true;
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
     }
 
-
-    public boolean setRoom(String room) {
-        this.room = room;
-        return true;
+    public void setProgramId(int programId) {
+        this.programId = programId;
     }
    
    public String toString(){
        return code;
    }
-  
-    
 }
 
 
