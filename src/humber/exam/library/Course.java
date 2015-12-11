@@ -27,7 +27,23 @@ public class Course {
         this.time = time;
         this.room = room;
     }
-  
+    
+    public Course(){
+        this.code = "";
+        this.cName = "";
+        this.teacher = "";
+        this.time = "";
+        this.room = "";
+    }
+    
+    public static Course getCourseById(){
+        Course c = new Course();
+        
+        
+        
+        return c;
+    }
+      
     public String getCode() {
         return code;
     }
