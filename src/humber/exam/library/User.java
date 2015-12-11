@@ -22,13 +22,13 @@ public class User {
     private int accessLevel;
 
     public User(String username, String password) throws Exception {
-        
         if (username.isEmpty() || password.isEmpty())
             throw new UserException("Username and/or password cannot be empty!");
         
         try {
+            id = Integer.valueOf(username);
             DatabaseConnection conn = DatabaseConnection.open();
-            Result result = conn.getUser(username, password);
+            Result result = conn.getUser(id, password);
             
             if (result != null && result.hasNext()) {
                 ResultSet set = result.next();

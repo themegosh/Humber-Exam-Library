@@ -39,7 +39,7 @@ public class Schedule
         
         //addExam(String courseCode, String roomNumber, String day_of_week, Timestamp start_time, Timestamp end_time) {
         //connection.addExam(exam.course, exam.room, 0, exam., convertStoT(exam.startTime), convertStoT(exam.endTime));
-        connection.addExam(exam.course.toString(), exam.room.toString(), exam.date.toString(),convertStoT(exam.startTime.toString()), convertStoT(exam.endTime.toString()));
+        //connection.addExam(exam.course.toString(), exam.room.toString(), exam.date.toString(),convertStoT(exam.startTime.toString()), convertStoT(exam.endTime.toString()));
         connection.close();
 
     }
@@ -120,10 +120,10 @@ public class Schedule
 
     }
 
-    public Exam getExam(Period period, Day day, String examID)
+    /*public Exam getExam(Period period, Day day, String examID)
     {
-        return new Exam();
-    }
+        //return new Exam();
+    }*/
     
     public ExamMap getExams(Period period, Day day)
     {

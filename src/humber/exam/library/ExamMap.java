@@ -35,7 +35,7 @@ class ExamMap
         return totalNumber;
     }
 
-    public Map returnExamsByCourse(Course tempCourse)
+    /*public Map returnExamsByCourse(Course tempCourse)
     {
         Map<String, Exam> allExamsByCourse = new HashMap<String, Exam>();
 
@@ -51,7 +51,7 @@ class ExamMap
         }
 
         return allExamsByCourse;
-    }
+    }*/
 
     public Map returnExamMap()
     {

@@ -34,9 +34,9 @@ public class SchedulePeriod {
         
     }
     
-    protected Exam getExam(Day day, String examID) {
+    /*protected Exam getExam(Day day, String examID) {
         return new Exam();
-    }
+    }*/
     
     protected void addExamMap(Day day, ExamMap examList) {
         
