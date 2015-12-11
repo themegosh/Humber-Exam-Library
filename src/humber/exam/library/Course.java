@@ -40,8 +40,7 @@ public class Course {
         }
         else {
             throw new Exception("Error: Class Course ("+code+") could not be found in DB!");
-        }
-            
+        }  
         conn.close();
     }
       
@@ -72,7 +71,6 @@ public class Course {
     public void setCode(String code) {
         this.code = code;
     }
-
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;

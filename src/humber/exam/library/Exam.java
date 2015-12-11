@@ -2,53 +2,78 @@
 package humber.exam.library;
 
 import org.joda.time.LocalTime;
+import java.sql.Timestamp;
+import humber.exam.database.*;
+import java.sql.ResultSet;
 
-public class Exam
-{
-    Course course;
-    LocalTime date;
+public class Exam {
+    String courseCode;
+    String roomId;
     LocalTime startTime;
     LocalTime endTime;
-    Room room;
-    int ID;
-    static int examIdentifier = 1923840;
+    int teacherId;
     
-    public Exam(Course course, LocalTime date, LocalTime starTime, LocalTime endTime, Room room)
-    {
-        ID = examIdentifier++;
-        this.course = course;
-        this.date = date;
+    public Exam(String courseCode, String roomId, LocalTime startTime, LocalTime endTime, int teacherId) {
+        this.courseCode = courseCode;
+        this.roomId = roomId;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.room = room;
+        this.teacherId = teacherId;
+        save();
     }
-    public boolean setCourse(Course course)
-    {
-        this.course = course;
-        return true;
+    public Exam(String courseCode) throws Exception{
+        DatabaseConnection conn = DatabaseConnection.open();
+        Result result = conn.getExamForCourseCode(courseCode);
+
+        if (result != null && result.hasNext()) {
+            ResultSet set = result.next();
+            this.courseCode = courseCode;
+            this.roomId = set.getString("ROOM_NUM");
+            this.startTime = new LocalTime(Timestamp.valueOf(set.getString("START_TIME")).getNanos());// why are we even using LocalTime?
+            this.endTime = new LocalTime(Timestamp.valueOf(set.getString("END_TIME")).getNanos());
+            this.teacherId = set.getInt("TEACHER_ID");
+        }
+        else {
+            throw new Exception("Error: Class Exam ("+courseCode+") could not be found in DB!");
+        }  
+        conn.close();
     }
-    public boolean setDate(LocalTime time)
-    {
-        this.date = time;
-        return true;
+    private void save() {
+        DatabaseConnection conn = DatabaseConnection.open();
+        conn.addExam(courseCode, null, null, null, null);
+        conn.close();
+    }    
+    public void setCourse(String courseCode) {
+        this.courseCode = courseCode;
     }
-    public boolean setStartTime(LocalTime time)
-    {
+    public void setStartTime(LocalTime time) {
         this.startTime = time;
-        return true;
     }
-    public boolean setEndTime(LocalTime time)
-    {
+    public void setEndTime(LocalTime time) {
         this.endTime = time;
-        return true;
     }
-    public boolean setRoom(Room room)
-    {
-        this.room = room;
-        return true;
+    public void setRoom(String roomId) {
+        this.roomId = roomId;
     }
-    public String toString()
-    {
-        return ID+"";
+    public void setTeacherId(int teacherId){
+        this.teacherId = teacherId;
+    }
+    public String getCourseCode(){
+        return courseCode;
+    }
+    public LocalTime getStartTime(){
+        return startTime;
+    }
+    public LocalTime getEndTime(){
+        return endTime;
+    }
+    public String getRoomId(){
+        return roomId;
+    }
+    public int getTeacherId(){
+        return teacherId;
+    }
+    public String toString() {
+        return courseCode;
     }
 }
